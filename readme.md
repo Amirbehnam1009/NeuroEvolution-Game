@@ -1,66 +1,181 @@
-# NeuroEvolution Game
+# 🧠 NeuroEvolution Game 🚀
 
-In this project, the game is designed to operate in two distinct modes: manual and neural evolution. The primary objective of the game is to navigate through obstacles along the path. In manual mode, players control the game using the spacebar. Upon running the game.py file, you'll encounter the main interface. Opting for the first choice initiates manual mode gameplay, while the second choice launches the game into the realm of neural evolution.
+A captivating game that combines manual play with neural evolution to master obstacle navigation! This project showcases the power of evolutionary algorithms in training neural networks without traditional supervised learning.
 
 <p align="center">
-  <img src="https://github.com/Amirbehnam1009/NeuroEvolution-Game/assets/117163007/78c53398-6751-4176-9f4c-1ca679fd4ccb"/ " width="400" > 
-  <img src="https://github.com/Amirbehnam1009/NeuroEvolution-Game/assets/117163007/ef895cc6-3f35-4867-9598-15314fed2e78"/ " width="325" > 
+  <img src="https://github.com/Amirbehnam1009/NeuroEvolution-Game/assets/117163007/78c53398-6751-4176-9f4c-1ca679fd4ccb" width="400" alt="Game Demo">
+  <img src="https://github.com/Amirbehnam1009/NeuroEvolution-Game/assets/117163007/ef895cc6-3f35-4867-9598-15314fed2e78" width="325" alt="Neural Evolution">
 </p>
 
-## About
+## 📖 About
 
-> Under The Supervision of [Prof.Mohammad Mehdi Ebadzadeh](https://scholar.google.com/citations?user=080Y_lUAAAAJ&hl=en)
+> Developed under the supervision of [Prof. Mohammad Mehdi Ebadzadeh](https://scholar.google.com/citations?user=080Y_lUAAAAJ&hl=en)  
+> Spring 2022 🎓
 
-> Spring 2022
+This project demonstrates neuroevolution - using genetic algorithms to train neural networks that can successfully play a game by navigating through obstacles. The AI learns through generations of selection, crossover, and mutation.
 
+## 🎮 Game Modes
 
-## Tools
+### 🕹️ Manual Mode
+- Control your character using the **spacebar**
+- Test your reflexes and timing skills
+- Navigate through increasingly difficult obstacles
 
-- Python
+### 🧠 Neural Evolution Mode
+- Watch as 300 AI players learn through generations
+- Neural networks process game state to make jumping decisions
+- Survival of the fittest: best performers pass their genes to next generations
 
-## How to Run
-    $ game.py
+## 🛠️ Tools & Technologies
 
+- **Python 3** 🐍
+- **NumPy** for efficient matrix operations
+- **Custom neural network implementation** from scratch
+- **Evolutionary algorithms** for training without backpropagation
 
-## Problem Description
+## 🚀 How to Run
 
-To enable the evolution of a game through neural networks, a neural network architecture is necessary to process vital decision-making parameters and produce corresponding outputs, simulating actions such as pressing the space button. Unlike conventional neural network training, there's a lack of training data for backpropagation, leading to the utilization of evolutionary algorithms.
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/Amirbehnam1009/NeuroEvolution-Game.git
+   cd NeuroEvolution-Game
+2. **Run the game**:
+   ```bash
+   python game.py
+   ```
+3. **Select your mode**:
 
-In the game, numerous players (e.g., 300) equipped with neural networks initialized with random weights and biases navigate obstacles. Over time, players with superior performance advance to subsequent generations following principles of evolution, with crossover and mutation iteratively enhancing overall performance.
+* Choose option 1 for Manual Mode 🕹️
 
-## Implementation
+* Choose option 2 for Neural Evolution Mode 🧠
+  
+# 🔬 Technical Implementation
+## 🧠 Neural Network Architecture (nn.py)
+* Custom implementation of feedforward neural networks
 
-### Neural Network Implementation (nn.py)
+* Configurable layers and neurons
 
-- Initialize a neural network class with neuron counts per layer.
-- Implement an activation function like sigmoid.
-- Define a forward function to process input and return output neurons.
+* Sigmoid activation function: f(x) = 1 / (1 + e^(-x))
 
-### Decision-making Parameters and Neural Network Architecture Selection (play.py)
+* Random weight initialization
 
-- Select an appropriate architecture class for the project.
-- Implement the think function to generate neural network output based on input vector, influencing left and right jumps.
+## 🎯 Decision Making (play.py)
+* Input parameters: distance to obstacles, player velocity, etc.
 
-### Survivor Selection (evolution.py)
+* Output: jump decision (left, right, or no jump)
 
-- In neural evolution mode, 300 players undergo scenarios where fitness increases with traveled distance.
-- Implement survivor selection methods such as sorting by fitness, roulette wheel, SUS, and Q-tournament.
+* Real-time processing of game state
 
-### Parent Selection and Generation of New Organisms (evolution.py)
+## ⚡ Evolutionary Algorithm (evolution.py)
+* **Population size**: 300 players per generation
 
-- Select survivors to serve as parents for generating the next generation.
-- Implement the generate_new_population function to return an array of descendants.
-- Ensure children differ from parents using the clone_player function to maintain fitness and neural network parameters.
+* **Fitness function**: Distance traveled
 
+* **Selection methods**:
 
+    * Fitness-proportional selection (Roulette Wheel)
 
-## Project Structure
+    * Stochastic Universal Sampling (SUS)
 
-This repository contains the following files, organized to streamline the development and understanding of the project:
+    * Q-Tournament selection
 
-- **game.py**: Responsible for orchestrating the game process, including gameplay mechanics and interactions.
-- **evolution.py**: Houses the `Evolution` class, which manages the evolution of creatures across generations.
-- **nn.py**: Defines the neural network architecture and implements the feedforward mechanism.
-- **player.py**: Encapsulates the `Player` class, facilitating the creation and management of player entities within the game scene.
-- **variables.py**: Centralizes public variables shared across multiple files, promoting maintainability and coherence within the project.
+* **Genetic operators**:
 
+    * Crossover: combining neural network weights of parents
+
+    * Mutation: introducing random changes to weights
+
+## 📊 Survivor Selection
+* Multiple strategies implemented:
+
+    * Sort by fitness (elitism) 
+
+    * Roulette wheel selection
+
+    * Stochastic Universal Sampling (SUS)
+
+    * Q-Tournament selection
+## 📁 Project Structure
+``` bash
+NeuroEvolution-Game/
+├── game.py          # 🎮 Main game orchestrator and UI
+├── evolution.py     # ⚡ Evolution class managing generations
+├── nn.py           # �🧠 Neural network implementation
+├── player.py       # 👤 Player class with neural network
+├── variables.py    # 📊 Shared variables and constants
+└── assets/         # 🖼️ Game assets (images, etc.)
+```
+## 🔧 Key Components
+### 🎮 game.py
+* Main game loop and rendering
+
+* Mode selection interface
+
+* Game state management
+
+### ⚡ evolution.py
+* **Evolution** class managing the evolutionary process
+
+* Population initialization and management
+
+* Fitness evaluation and selection mechanisms
+
+* Generation of new populations through crossover and mutation
+
+### 🧠 nn.py
+* **NeuralNetwork** class with configurable architecture
+
+* Forward propagation implementation
+
+* Weight and bias management
+
+### 👤 player.py
+* **Player** class representing game entities
+
+* Neural network integration for AI players
+
+* Physics and movement handling
+
+## 🔬 The Science Behind It
+### Neuroevolution Basics
+Unlike traditional neural networks that use backpropagation, this project employs evolutionary algorithms to train the networks. The process mimics natural selection:
+
+1. **Initialization**: Create population with random neural networks
+
+2. **Evaluation**: Test each network's performance (fitness)
+
+3. **Selection**: Choose best performers as parents
+
+4. **Reproduction**: Create new generation through crossover and mutation
+
+5. **Iteration**: Repeat process until satisfactory performance is achieved
+
+## Neural Network Architecture
+The AI players use neural networks with this structure:
+
+* **Input layer**: Game state parameters (obstacle distances, velocities, etc.)
+
+* **Hidden layers**: Process information (configurable size)
+
+* **Output layer**: Decision to jump left, right, or not jump
+
+### 📈 Performance Metrics
+* **Fitness**: Measured by distance traveled
+
+* **Generations**: Number of evolutionary cycles
+
+* **Success rate**: Percentage of players completing the course
+
+* Convergence: Improvement rate across generations
+## 🎯 Future Enhancements
+* Graphical visualization of neural network decisions
+
+* Real-time fitness graphs across generations
+
+* Additional obstacle types and game mechanics
+
+* Hyperparameter optimization interface
+
+* Export/import of trained models
+
+* Multi-objective optimization (speed vs. survival)
