@@ -166,7 +166,7 @@ The AI players use neural networks with this structure:
 
 * **Success rate**: Percentage of players completing the course
 
-* Convergence: Improvement rate across generations
+* **Convergence**: Improvement rate across generations
 ## 🎯 Future Enhancements
 * Graphical visualization of neural network decisions
 
